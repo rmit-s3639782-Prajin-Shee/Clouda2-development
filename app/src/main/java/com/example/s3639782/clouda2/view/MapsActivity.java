@@ -28,6 +28,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -84,16 +87,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 firebaseAuth = FirebaseAuth.getInstance();
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("incidents");
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("incidents").push();
+
+
+                SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
+                String date = s.format(new Date());
 
                 incName = getIntent().getExtras().getString("incName");
                 incDesc = getIntent().getExtras().getString("incDesc");
 
-                mDatabase.child(incName);
-                mDatabase.child(incName).child("Desc").setValue(incDesc);
-                mDatabase.child(incName).child("LatLng").setValue(incPoint.toString());
-                mDatabase.child(incName).child("Address").setValue(address.toString());
-                mDatabase.child(incName).child("User").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                mDatabase.child("Name").setValue(incName);
+                mDatabase.child("Desc").setValue(incDesc);
+                mDatabase.child("LatLng").setValue(incPoint.toString());
+                mDatabase.child("Address").setValue(address.toString());
+                mDatabase.child("Date").setValue(date);
+                mDatabase.child("User").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 Toast.makeText(getApplicationContext(),incName,Toast.LENGTH_LONG).show();
 
                 Intent i = new Intent(getApplicationContext(), IncidentListActivity.class);

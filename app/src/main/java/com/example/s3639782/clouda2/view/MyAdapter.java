@@ -1,7 +1,9 @@
 package com.example.s3639782.clouda2.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.s3639782.clouda2.R;
+import com.example.s3639782.clouda2.controller.RegisterUser;
 
 import java.util.List;
 
@@ -34,14 +37,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        ListItem listItem = listItems.get(i);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        final ListItem listItem = listItems.get(i);
         viewHolder.RecHead.setText(listItem.getHeading());
         viewHolder.RecDesc.setText(listItem.getDesc());
-        viewHolder.viewInc.setOnClickListener(new View.OnClickListener() {
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "hello", Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(), listItem.getHeading().toString()+" "+listItem.getDesc().toString(), Toast.LENGTH_LONG).show();
+                Intent i = new Intent(context.getApplicationContext(),RegisterActivity.class);
+                i.putExtra("heading", listItem.getHeading().toString());
+                i.putExtra("desc", listItem.getDesc().toString());
+                i.putExtra("address", listItem.getAddress().toString());
+                context.startActivity(i);
+
             }
         });
     }
@@ -56,6 +65,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView RecHead;
         public TextView RecDesc;
         public Button viewInc;
+        public CardView cardView;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +74,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             RecHead = (TextView)itemView.findViewById(R.id.RecHeading);
             RecDesc = (TextView)itemView.findViewById(R.id.RecDesc);
             viewInc = (Button)itemView.findViewById(R.id.viewInc);
+            cardView = (CardView) itemView.findViewById(R.id.cardView);
+
         }
     }
 }

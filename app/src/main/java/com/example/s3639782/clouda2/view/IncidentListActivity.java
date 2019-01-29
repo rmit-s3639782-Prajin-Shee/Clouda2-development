@@ -18,8 +18,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class IncidentListActivity extends AppCompatActivity {
@@ -29,8 +35,12 @@ public class IncidentListActivity extends AppCompatActivity {
     private List<ListItem> listItems;
     private Firebase mRef;
     DatabaseReference databaseReference;
-    String a;
-    String b;
+    String name;
+    String desc;
+    String address;
+    String user;
+    String latLng;
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +53,6 @@ public class IncidentListActivity extends AppCompatActivity {
         //ListItem listItem = new ListItem("s", "");
        // listItems.add(listItem);
 
-
        mRef.addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -53,13 +62,23 @@ public class IncidentListActivity extends AppCompatActivity {
                   // String a = dataSnapshot2.child("name").getValue().toString();
 
 
-                   a = dataSnapshot.getKey();
-                   b = dataSnapshot.child("Address").getValue().toString();
 
-                  // String c = dataSnapshot2.child("name")
-                  Log.e("key", a);
-                  Log.e("Value", b);
-                  Log.e("Value2", dataSnapshot.getKey());
+                   name = dataSnapshot.child("Name").getValue().toString();
+                   desc = dataSnapshot.child("Desc").getValue().toString();
+                   address = dataSnapshot.child("Address").getValue().toString();
+                   user = dataSnapshot.child("User").getValue().toString();
+                   latLng = dataSnapshot.child("LatLng").getValue().toString();
+                   date = dataSnapshot.child("Date").getValue().toString();
+
+
+
+
+
+
+               // String c = dataSnapshot2.child("name")
+                 // Log.e("key", a);
+                //  Log.e("Value", b);
+                 // Log.e("Value2", dataSnapshot.getKey());
 
 
 
@@ -69,7 +88,8 @@ public class IncidentListActivity extends AppCompatActivity {
 
                //String incKey = mRef.child("incidents").getParent().toString();
               // String incVal = mRef.child("incidents").toString();
-               ListItem listItem = new ListItem(a, b);
+               ListItem listItem = new ListItem(name, desc,address,user,latLng,date);
+
                listItems.add(listItem);
                adapter.notifyDataSetChanged();
            }
@@ -97,7 +117,10 @@ public class IncidentListActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.incListRecycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
 
 
 
