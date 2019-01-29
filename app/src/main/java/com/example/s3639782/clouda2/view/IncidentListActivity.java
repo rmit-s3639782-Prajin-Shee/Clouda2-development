@@ -41,6 +41,9 @@ public class IncidentListActivity extends AppCompatActivity {
     String user;
     String latLng;
     String date;
+    String time;
+    String Lat;
+    String Long;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,38 +60,18 @@ public class IncidentListActivity extends AppCompatActivity {
            @Override
            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-
-              // for(DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
-                  // String a = dataSnapshot2.child("name").getValue().toString();
-
-
-
                    name = dataSnapshot.child("Name").getValue().toString();
                    desc = dataSnapshot.child("Desc").getValue().toString();
                    address = dataSnapshot.child("Address").getValue().toString();
                    user = dataSnapshot.child("User").getValue().toString();
-                   latLng = dataSnapshot.child("LatLng").getValue().toString();
+//                   latLng = dataSnapshot.child("LatLng").getValue().toString();
                    date = dataSnapshot.child("Date").getValue().toString();
+                   time = dataSnapshot.child("Time").getValue().toString();
+                   Lat = dataSnapshot.child("Lat").getValue().toString();
+                   time = dataSnapshot.child("Long").getValue().toString();
 
 
-
-
-
-
-               // String c = dataSnapshot2.child("name")
-                 // Log.e("key", a);
-                //  Log.e("Value", b);
-                 // Log.e("Value2", dataSnapshot.getKey());
-
-
-
-
-            //   }
-
-
-               //String incKey = mRef.child("incidents").getParent().toString();
-              // String incVal = mRef.child("incidents").toString();
-               ListItem listItem = new ListItem(name, desc,address,user,latLng,date);
+               ListItem listItem = new ListItem(name, desc,address,user,Lat,Long,date, time);
 
                listItems.add(listItem);
                adapter.notifyDataSetChanged();

@@ -50,9 +50,11 @@
             android:required="false" />
 
         <activity android:name=".view.IncidentDescActivity" />
-        <activity android:name=".view.IncidentListActivity"></activity>
-
-
+        <activity android:name=".view.IncidentListActivity" />
+        <activity android:name=".view.IncidentActivity" />
+        <activity
+            android:name=".view.AllIncidentsActivity"
+            android:label="@string/title_activity_all_incidents"></activity>
     </application>
 
 </manifest>

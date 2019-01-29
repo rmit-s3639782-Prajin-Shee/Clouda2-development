@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.IncidentActivity">
+
+    <TextView
+        android:id="@+id/incidentName"
+        android:hint="NAME"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+    <TextView
+        android:id="@+id/incidentDate"
+        android:hint="Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/incidentTime"
+        android:hint="Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/incidentDate"/>
+    <TextView
+        android:id="@+id/incidentLocation"
+        android:hint="Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/incidentName"/>
+    <TextView
+        android:id="@+id/incidentDesc"
+        android:hint="DESC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/incidentLocation"/>
+
+    <Button
+        android:id="@+id/testBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click me"/>
+
+
+</RelativeLayout>

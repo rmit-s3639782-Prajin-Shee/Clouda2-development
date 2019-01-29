@@ -45,10 +45,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), listItem.getHeading().toString()+" "+listItem.getDesc().toString(), Toast.LENGTH_LONG).show();
-                Intent i = new Intent(context.getApplicationContext(),RegisterActivity.class);
+                Intent i = new Intent(context.getApplicationContext(),IncidentActivity.class);
                 i.putExtra("heading", listItem.getHeading().toString());
                 i.putExtra("desc", listItem.getDesc().toString());
                 i.putExtra("address", listItem.getAddress().toString());
+                i.putExtra("date", listItem.getDate());
+                i.putExtra("time", listItem.getTime());
                 context.startActivity(i);
 
             }

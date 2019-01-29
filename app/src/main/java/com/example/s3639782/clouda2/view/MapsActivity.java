@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.IOException;
 import java.security.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -46,6 +47,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String incDesc;
     LatLng incPoint;
     String address;
+    String Lat;
+    String Long;
     Geocoder geocode;
 
 
@@ -64,6 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onPlaceSelected(Place place) {
                 Log.d("Maps", "Place selected: " + place.getName());
+
                 latLng = place.getLatLng();
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 mMap.animateCamera( CameraUpdateFactory.zoomTo( 17.0f ) );
@@ -90,18 +94,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mDatabase = FirebaseDatabase.getInstance().getReference().child("incidents").push();
 
 
-                SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
+                SimpleDateFormat s = new SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault());
                 String date = s.format(new Date());
+
+                SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+                String time = b.format(new Date());
+
 
                 incName = getIntent().getExtras().getString("incName");
                 incDesc = getIntent().getExtras().getString("incDesc");
 
                 mDatabase.child("Name").setValue(incName);
                 mDatabase.child("Desc").setValue(incDesc);
-                mDatabase.child("LatLng").setValue(incPoint.toString());
+               // mDatabase.child("LatLng").setValue(incPoint.toString());
                 mDatabase.child("Address").setValue(address.toString());
+                mDatabase.child("Lat").setValue(incPoint.latitude);
+                mDatabase.child("Long").setValue(incPoint.longitude);
                 mDatabase.child("Date").setValue(date);
                 mDatabase.child("User").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                mDatabase.child("Time").setValue(time);
                 Toast.makeText(getApplicationContext(),incName,Toast.LENGTH_LONG).show();
 
                 Intent i = new Intent(getApplicationContext(), IncidentListActivity.class);
