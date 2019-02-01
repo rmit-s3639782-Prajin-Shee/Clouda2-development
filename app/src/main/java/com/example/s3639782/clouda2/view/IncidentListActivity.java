@@ -1,11 +1,14 @@
 package com.example.s3639782.clouda2.view;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.s3639782.clouda2.R;
 import com.firebase.client.ChildEventListener;
@@ -35,15 +38,16 @@ public class IncidentListActivity extends AppCompatActivity {
     private List<ListItem> listItems;
     private Firebase mRef;
     DatabaseReference databaseReference;
-    String name;
-    String desc;
-    String address;
-    String user;
-    String latLng;
-    String date;
-    String time;
-    String Lat;
-    String Long;
+    private String name;
+    private String desc;
+    private String address;
+    private String user;
+    private String latLng;
+    private String date;
+    private String time;
+    private String Lat;
+    private String Long;
+    private String severity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,23 +59,35 @@ public class IncidentListActivity extends AppCompatActivity {
         listItems = new ArrayList<>();
         //ListItem listItem = new ListItem("s", "");
        // listItems.add(listItem);
+        Firebase.setAndroidContext(this);
 
-       mRef.addChildEventListener(new ChildEventListener() {
+        Button mainMenuBtn = (Button)findViewById(R.id.backMainMenu2);
+        mainMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(IncidentListActivity.this, MenuActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+        mRef.addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                   name = dataSnapshot.child("Name").getValue().toString();
-                   desc = dataSnapshot.child("Desc").getValue().toString();
-                   address = dataSnapshot.child("Address").getValue().toString();
-                   user = dataSnapshot.child("User").getValue().toString();
+                   name = dataSnapshot.child("Name").getValue(String.class);
+                   desc = dataSnapshot.child("Desc").getValue(String.class);
+                   address = dataSnapshot.child("Address").getValue(String.class);
+                   user = dataSnapshot.child("User").getValue(String.class);
 //                   latLng = dataSnapshot.child("LatLng").getValue().toString();
-                   date = dataSnapshot.child("Date").getValue().toString();
-                   time = dataSnapshot.child("Time").getValue().toString();
-                   Lat = dataSnapshot.child("Lat").getValue().toString();
-                   time = dataSnapshot.child("Long").getValue().toString();
+                   date = dataSnapshot.child("Date").getValue(String.class);
+                   time = dataSnapshot.child("Time").getValue(String.class);
+                   Lat = dataSnapshot.child("Lat").getValue(String.class);
+                   Long = dataSnapshot.child("Long").getValue(String.class);
+                   severity = dataSnapshot.child("Severity").getValue(String.class);
 
 
-               ListItem listItem = new ListItem(name, desc,address,user,Lat,Long,date, time);
+               ListItem listItem = new ListItem(name, desc,address,user,Lat,Long,date,time,severity);
 
                listItems.add(listItem);
                adapter.notifyDataSetChanged();

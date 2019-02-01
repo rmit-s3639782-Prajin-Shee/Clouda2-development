@@ -6,4 +6,18 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AllIncidentsActivity" />
+    tools:context=".view.AllIncidentsActivity" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+        <Button
+        android:id="@+id/backMainMenu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Main Menu"
+        android:background="@color/colorAccent"
+        />
+    </LinearLayout>
+
+</fragment>

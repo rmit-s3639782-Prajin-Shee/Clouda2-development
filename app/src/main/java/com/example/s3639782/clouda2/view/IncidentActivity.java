@@ -1,8 +1,10 @@
 package com.example.s3639782.clouda2.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ public class IncidentActivity extends AppCompatActivity {
         String address = intent.getStringExtra("address");
         String date = intent.getStringExtra("date");
         String time = intent.getStringExtra("time");
+        String severity = intent.getStringExtra("severity");
+        Log.e("asd" ,time);
 
 
         TextView IncName = (TextView)findViewById(R.id.incidentName);
@@ -37,15 +41,23 @@ public class IncidentActivity extends AppCompatActivity {
         IncDate.setText(date);
         IncTime.setText(time);
 
-        Button button = (Button)findViewById(R.id.testBtn);
+      /*  if(severity.equals("1")){
+            IncName.setTextColor(Color.parseColor("#FFFF00"));
+        }
+        else if(severity.equals("2")){
+            IncName.setTextColor(Color.parseColor("#ffa500"));
+        }*/
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), AllIncidentsActivity.class);
-                startActivity(i);
-            }
-        });
+
+//        Button button = (Button)findViewById(R.id.testBtn);
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getApplicationContext(), AllIncidentsActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
 
     }

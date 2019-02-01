@@ -14,6 +14,7 @@ import com.example.s3639782.clouda2.R;
 import com.example.s3639782.clouda2.view.IncidentDescActivity;
 import com.example.s3639782.clouda2.view.IncidentListActivity;
 import com.example.s3639782.clouda2.view.MapsActivity;
+import com.example.s3639782.clouda2.view.MenuActivity;
 import com.example.s3639782.clouda2.view.ProfileSetupActivity;
 import com.example.s3639782.clouda2.view.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -67,7 +68,7 @@ public class LoginUser implements View.OnClickListener {
 
                         if(task.isSuccessful()){
                             Toast.makeText(context, "Login Successful",Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(context, IncidentDescActivity.class);
+                            Intent i = new Intent(context, MenuActivity.class);
                             context.startActivity(i);
                         }
                         else{

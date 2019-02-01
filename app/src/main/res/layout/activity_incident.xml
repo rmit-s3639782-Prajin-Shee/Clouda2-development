@@ -11,38 +11,45 @@
         android:hint="NAME"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_margin="20dp"/>
     <TextView
         android:id="@+id/incidentDate"
         android:hint="Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="10sp"
+        />
     <TextView
         android:id="@+id/incidentTime"
         android:hint="Time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/incidentDate"/>
+        android:layout_below="@id/incidentDate"
+        android:layout_marginRight="20dp"
+        android:textSize="10sp"/>
     <TextView
         android:id="@+id/incidentLocation"
         android:hint="Location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/incidentName"/>
+        android:layout_below="@+id/incidentName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
     <TextView
         android:id="@+id/incidentDesc"
         android:hint="DESC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/incidentLocation"/>
+        android:layout_below="@+id/incidentLocation"
+        android:layout_margin="20dp"/>
 
-    <Button
-        android:id="@+id/testBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="click me"/>
+
 
 
 </RelativeLayout>

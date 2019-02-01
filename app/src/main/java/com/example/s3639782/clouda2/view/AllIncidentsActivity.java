@@ -1,8 +1,11 @@
 package com.example.s3639782.clouda2.view;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.s3639782.clouda2.R;
 import com.firebase.client.ChildEventListener;
@@ -13,6 +16,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -23,9 +27,13 @@ public class AllIncidentsActivity extends FragmentActivity implements OnMapReady
 
     private GoogleMap mMap;
     private Firebase mRef;
-    private ArrayList<Marker> markers = new ArrayList<>();
-    private ArrayList<String> latLongs = new ArrayList<>();
-    private String lat, lngs;
+   /* private ArrayList<Marker> markers = new ArrayList<>();
+    private ArrayList<Double> allLats = new ArrayList<>();
+    private ArrayList<Double> allLongs = new ArrayList<>();
+    private ArrayList<LatLng> Ltlng = new ArrayList<>();*/
+    private String title;
+    private double lat, lngs;
+    private String desc;
 
 
     @Override
@@ -36,10 +44,17 @@ public class AllIncidentsActivity extends FragmentActivity implements OnMapReady
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Firebase.setAndroidContext(this);
 
 
-
-
+    Button backBtn = (Button)findViewById(R.id.backMainMenu);
+    backBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(AllIncidentsActivity.this, MenuActivity.class);
+            startActivity(i);
+        }
+    });
 
     }
 
@@ -62,14 +77,35 @@ public class AllIncidentsActivity extends FragmentActivity implements OnMapReady
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                lat = dataSnapshot.child("Lat").getValue().toString();
-                lngs =dataSnapshot.child("Lat").getValue().toString();
+                if(dataSnapshot.child("Lat").getValue()!=null){
+                lat = Double.valueOf(dataSnapshot.child("Lat").getValue().toString());}
+                if(dataSnapshot.child("Long").getValue()!=null){
+                lngs =Double.valueOf(dataSnapshot.child("Long").getValue().toString());}
+                if(dataSnapshot.child("Name").getValue()!=null){
+                title = dataSnapshot.child("Name").getValue().toString();}
+                if(dataSnapshot.child("Desc").getValue()!=null){
+                desc = dataSnapshot.child("Desc").getValue().toString();}
 
                /* LatLng point = new LatLng(1,1);
                 MarkerOptions marker = new MarkerOptions().position(
                         new LatLng(point.latitude, point.longitude)).title("New Marker");
                 */
                 //latLongs.add(latLngs);
+
+
+                //Log.e("LAts", lat);
+               // allLats.add(lat);
+                //allLongs.add(lngs);
+               // Ltlng.add(new LatLng(lat,lngs));
+
+                MarkerOptions marker = new MarkerOptions().position(
+                        new LatLng(lat, lngs)).title("New Marker");
+                marker.title(title);
+                marker.snippet(desc);
+
+
+                mMap.addMarker(marker);
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lngs)));
 
 
 
@@ -97,8 +133,15 @@ public class AllIncidentsActivity extends FragmentActivity implements OnMapReady
         });
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+
+        /*for(int i = 0; i < Ltlng.size(); i++){
+
+            mMap.addMarker(new MarkerOptions().position(Ltlng.get(i)).title("Marker in Sydney"));
+            Log.e("Hello", Ltlng.get(i)+"");
+        }*/
+
+        /*LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
     }
 }

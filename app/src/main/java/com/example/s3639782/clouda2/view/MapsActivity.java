@@ -10,6 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.firebase.client.Firebase;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
@@ -43,14 +50,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng latLng;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference mDatabase;
-    String incName;
-    String incDesc;
+    private String incName;
+    private String incDesc;
     LatLng incPoint;
-    String address;
-    String Lat;
-    String Long;
+    private String address;
+    private String Lat;
+    private String Long;
     Geocoder geocode;
-
+    private String incSeverity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        Firebase.setAndroidContext(this);
 
         placeAutoComplete = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete);
         placeAutoComplete.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -103,6 +110,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 incName = getIntent().getExtras().getString("incName");
                 incDesc = getIntent().getExtras().getString("incDesc");
+                incSeverity = getIntent().getExtras().getString("severity");
 
                 mDatabase.child("Name").setValue(incName);
                 mDatabase.child("Desc").setValue(incDesc);
@@ -113,9 +121,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mDatabase.child("Date").setValue(date);
                 mDatabase.child("User").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 mDatabase.child("Time").setValue(time);
+                mDatabase.child("Severity").setValue(incSeverity);
+
                 Toast.makeText(getApplicationContext(),incName,Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(getApplicationContext(), IncidentListActivity.class);
+                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                String url ="https://nodecca2.appspot.com/disaster?title="+incName+"&description="+ incDesc.replace(" ","+")+"&address="+address.replace(" ","+")+"&Lat="+incPoint.latitude+"&Lng="+incPoint.longitude;
+                url.replace(",","");
+                url.replace(" ", "+");
+
+               //
+// Request a string response from the provided URL.
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Display the first 500 characters of the response string.
+                               // mTextView.setText("Response is: "+ response.substring(0,500));
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //mTextView.setText("That didn't work!");
+                    }
+                });
+// Add the request to the RequestQueue.
+                queue.add(stringRequest);
+
+
+
+                Intent i = new Intent(getApplicationContext(), MenuActivity.class);
                 getApplicationContext().startActivity(i);
             }
         });

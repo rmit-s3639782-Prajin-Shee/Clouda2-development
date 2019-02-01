@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MenuActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+    <Button
+        android:id="@+id/viewAllInc"
+        android:text="View all incidents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorAccent"
+
+        />
+    <Button
+        android:id="@+id/viewLiveFeed"
+        android:text="View Live Feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/viewAllInc"
+        android:background="@color/colorAccent"
+        />
+    <Button
+        android:id="@+id/reportIncident"
+        android:text="Report Incident"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/viewLiveFeed"
+        android:background="@color/colorAccent"
+        />
+</RelativeLayout>
+
+</RelativeLayout>

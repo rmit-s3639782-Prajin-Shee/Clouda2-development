@@ -2,9 +2,11 @@ package com.example.s3639782.clouda2.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +42,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         final ListItem listItem = listItems.get(i);
         viewHolder.RecHead.setText(listItem.getHeading());
-        viewHolder.RecDesc.setText(listItem.getDesc());
+       // viewHolder.RecSeverity.setText(listItem.getDesc());
+
+        if(listItem.getSeverity().equals("1")){
+            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFFFE5"));
+            viewHolder.RecSeverity.setText("Low");
+
+        }
+        else if (listItem.getSeverity().equals("2")){
+            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFEDCC"));
+            viewHolder.RecSeverity.setText("Meidum");
+
+        }
+        else if (listItem.getSeverity().equals("3")){
+            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFE5E5"));
+            viewHolder.RecSeverity.setText("High");
+
+        }
+
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +70,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 i.putExtra("address", listItem.getAddress().toString());
                 i.putExtra("date", listItem.getDate());
                 i.putExtra("time", listItem.getTime());
+                i.putExtra("severity", listItem.getSeverity().toString());
+
                 context.startActivity(i);
 
             }
@@ -65,17 +86,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView RecHead;
-        public TextView RecDesc;
-        public Button viewInc;
+        public TextView RecSe;
+        //public Button viewInc;
         public CardView cardView;
+        public TextView RecSeverity;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             RecHead = (TextView)itemView.findViewById(R.id.RecHeading);
-            RecDesc = (TextView)itemView.findViewById(R.id.RecDesc);
-            viewInc = (Button)itemView.findViewById(R.id.viewInc);
+            RecSeverity = (TextView)itemView.findViewById(R.id.RecSeverity);
+            //viewInc = (Button)itemView.findViewById(R.id.viewInc);
             cardView = (CardView) itemView.findViewById(R.id.cardView);
 
         }
