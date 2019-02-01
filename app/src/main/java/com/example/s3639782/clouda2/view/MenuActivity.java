@@ -18,12 +18,21 @@ public class MenuActivity extends AppCompatActivity {
         Button viewAllInc = (Button)findViewById(R.id.viewAllInc);
         Button viewLiveFeed = (Button)findViewById(R.id.viewLiveFeed);
         Button reportInc = (Button)findViewById(R.id.reportIncident);
+        Button dataAnalysisBtn = (Button)findViewById(R.id.dataAnalysisBtn);
 
 
         viewAllInc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuActivity.this, AllIncidentsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        dataAnalysisBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MenuActivity.this, WebViewActivity.class );
                 startActivity(i);
             }
         });

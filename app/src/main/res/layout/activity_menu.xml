@@ -11,13 +11,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-    <Button
+        <Button
+            android:id="@+id/dataAnalysisBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorAccent"
+            android:text="DATA ANALYSIS"
+            android:textAllCaps="false"
+             />
+
+        <Button
         android:id="@+id/viewAllInc"
         android:text="View all incidents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@color/colorAccent"
+        android:layout_below="@+id/dataAnalysisBtn"
 
         />
     <Button

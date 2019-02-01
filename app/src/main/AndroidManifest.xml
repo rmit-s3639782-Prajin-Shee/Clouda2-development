@@ -57,6 +57,7 @@
             android:label="@string/title_activity_all_incidents" />
         <activity android:name=".view.MenuActivity" >
         </activity>
+        <activity android:name=".view.WebViewActivity" />
     </application>
 
 </manifest>
