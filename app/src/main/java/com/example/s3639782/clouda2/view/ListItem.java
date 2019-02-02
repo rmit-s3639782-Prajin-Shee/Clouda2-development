@@ -12,8 +12,9 @@ public class ListItem {
     private String Lat;
     private String Long;
     private String severity;
+    private String category;
 
-    public ListItem(String heading, String desc, String address, String user, String Lat, String Long, String Date, String Time, String severity) {
+    public ListItem(String heading, String desc, String address, String user, String Lat, String Long, String Date, String Time, String severity, String category) {
         this.heading = heading;
         this.desc = desc;
         this.address = address;
@@ -24,6 +25,7 @@ public class ListItem {
         this.Date = Date;
         this.Time = Time;
         this.severity= severity;
+        this.category = category;
     }
 
     public String getHeading() {
@@ -104,5 +106,17 @@ public class ListItem {
 
     public void setDate(String date) {
         Date = date;
+    }
+
+    public void setLatLng(String latLng) {
+        LatLng = latLng;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

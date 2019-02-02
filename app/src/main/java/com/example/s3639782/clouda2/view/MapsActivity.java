@@ -57,7 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String Lat;
     private String Long;
     Geocoder geocode;
-    private String incSeverity;
+    private String incSeverity, incCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +111,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 incName = getIntent().getExtras().getString("incName");
                 incDesc = getIntent().getExtras().getString("incDesc");
                 incSeverity = getIntent().getExtras().getString("severity");
+                incCategory = getIntent().getExtras().getString("category");
+
+
 
                 mDatabase.child("Name").setValue(incName);
                 mDatabase.child("Desc").setValue(incDesc);
@@ -122,6 +125,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mDatabase.child("User").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 mDatabase.child("Time").setValue(time);
                 mDatabase.child("Severity").setValue(incSeverity);
+                mDatabase.child("Category").setValue(incCategory);
 
                 Toast.makeText(getApplicationContext(),incName,Toast.LENGTH_LONG).show();
 

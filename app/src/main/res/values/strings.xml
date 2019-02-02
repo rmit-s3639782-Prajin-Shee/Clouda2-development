@@ -2,4 +2,15 @@
     <string name="app_name">Clouda2</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_all_incidents">Map</string>
+
+    <string-array name="event_array">
+        <item>Fire</item>
+        <item>Transport</item>
+        <item>Flood</item>
+        <item>Obstacle</item>
+        <item>Crime</item>
+        <item>Biological</item>
+        <item>Natural Disaster</item>
+        <item>Other</item>
+    </string-array>
 </resources>

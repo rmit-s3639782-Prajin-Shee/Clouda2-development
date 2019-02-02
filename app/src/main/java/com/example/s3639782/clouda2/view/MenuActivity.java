@@ -32,8 +32,8 @@ public class MenuActivity extends AppCompatActivity {
         dataAnalysisBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuActivity.this, WebViewActivity.class );
-                startActivity(i);
+            //    Intent i = new Intent(MenuActivity.this, WebViewActivity.class );
+               // startActivity(i);
             }
         });
 
