@@ -48,6 +48,7 @@ public class IncidentListActivity extends AppCompatActivity {
     private String Lat;
     private String Long;
     private String severity;
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +86,10 @@ public class IncidentListActivity extends AppCompatActivity {
                    Lat = dataSnapshot.child("Lat").getValue(String.class);
                    Long = dataSnapshot.child("Long").getValue(String.class);
                    severity = dataSnapshot.child("Severity").getValue(String.class);
+                   category = dataSnapshot.child("Category").getValue(String.class);
 
 
-               ListItem listItem = new ListItem(name, desc,address,user,Lat,Long,date,time,severity);
+               ListItem listItem = new ListItem(name, desc,address,user,Lat,Long,date,time,severity, category);
 
                listItems.add(listItem);
                adapter.notifyDataSetChanged();
