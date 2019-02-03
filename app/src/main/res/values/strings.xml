@@ -5,12 +5,12 @@
 
     <string-array name="event_array">
         <item>Fire</item>
-        <item>Transport</item>
+        <item>Transport Accidents</item>
         <item>Flood</item>
         <item>Obstacle</item>
         <item>Crime</item>
-        <item>Biological</item>
-        <item>Natural Disaster</item>
+        <item>Biological Hazards</item>
+        <item>Natural Disasters</item>
         <item>Other</item>
     </string-array>
 </resources>
