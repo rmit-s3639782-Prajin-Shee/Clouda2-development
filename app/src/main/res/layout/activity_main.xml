@@ -7,7 +7,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center_vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:background="#efebe4">
 
 
 
@@ -19,6 +20,12 @@
             android:paddingRight="20dp"
             android:layout_below="@+id/main_page_toolbar"
             >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"
+                android:layout_margin="20dp"/>
 
 
             <EditText
@@ -42,18 +49,18 @@
                 android:text="Login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
+                android:background="@drawable/yellow_button"
                 android:layout_marginBottom="10dp"
                 />
 
             <Button
                 android:id="@+id/registerScreenBtn"
-                android:text="Not yet a Member? Register"
+                android:text="Register"
                 android:textAllCaps="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:textColor="#ffffff"
+                android:background="@drawable/grey_button"
+                android:textColor="#000000"
                 />
 
 

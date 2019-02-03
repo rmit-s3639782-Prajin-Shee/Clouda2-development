@@ -42,21 +42,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         final ListItem listItem = listItems.get(i);
         viewHolder.RecHead.setText(listItem.getHeading());
+        viewHolder.RecAddress.setText(listItem.getAddress());
        // viewHolder.RecSeverity.setText(listItem.getDesc());
 
+
+
         if(listItem.getSeverity().equals("1")){
-            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFFFE5"));
+            //viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFFFE5"));
+
             viewHolder.RecSeverity.setText("Low");
+            viewHolder.RecSeverity.setTextColor(Color.parseColor("#008000"));
 
         }
         else if (listItem.getSeverity().equals("2")){
-            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFEDCC"));
+            //viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFEDCC"));
             viewHolder.RecSeverity.setText("Meidum");
+            viewHolder.RecSeverity.setTextColor(Color.parseColor("#FFA500"));
+
 
         }
         else if (listItem.getSeverity().equals("3")){
-            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFE5E5"));
+            //viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#FFE5E5"));
             viewHolder.RecSeverity.setText("High");
+            viewHolder.RecSeverity.setTextColor(Color.parseColor("#FF0000"));
+
 
         }
 
@@ -90,6 +99,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         //public Button viewInc;
         public CardView cardView;
         public TextView RecSeverity;
+        public TextView RecAddress;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -99,6 +109,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             RecSeverity = (TextView)itemView.findViewById(R.id.RecSeverity);
             //viewInc = (Button)itemView.findViewById(R.id.viewInc);
             cardView = (CardView) itemView.findViewById(R.id.cardView);
+            RecAddress = (TextView)itemView.findViewById(R.id.RecAddress);
 
         }
     }

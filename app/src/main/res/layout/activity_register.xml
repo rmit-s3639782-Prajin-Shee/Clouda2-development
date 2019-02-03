@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:text="Register"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/yellow_button"
             android:textColor="#ffffff"/>
 
         <!-- Link to Login Screen -->

@@ -11,23 +11,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Incident Name"/>
+        android:text="Incident Name"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
     <EditText
         android:id="@+id/incName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         />
 
     <Spinner
         android:id="@+id/category_spinner"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Severity (1-3)"/>
+        android:text="Severity (1-3)"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
 
     <SeekBar
@@ -35,12 +40,14 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:max="3"
+        android:layout_marginBottom="20dp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Incident Description"/>
+        android:text="Incident Description"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
     <ScrollView
         android:id="@+id/ScrollView01"
@@ -50,7 +57,9 @@
         <EditText
             android:id="@+id/incDesc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            />
 
     </ScrollView>
 
@@ -59,7 +68,7 @@
         android:id="@+id/incReportBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/yellow_button"
         android:text="Next"
         android:textAllCaps="false"
         android:textColor="#ffffff" />

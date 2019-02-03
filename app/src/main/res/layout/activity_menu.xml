@@ -6,17 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".view.MenuActivity">
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_marginTop="200dp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
+
 
         <Button
             android:id="@+id/dataAnalysisBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/grey_button"
             android:text="DATA ANALYSIS"
             android:textAllCaps="false"
              />
@@ -27,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/grey_button"
         android:layout_below="@+id/dataAnalysisBtn"
 
         />
@@ -38,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@+id/viewAllInc"
-        android:background="@color/colorAccent"
+        android:background="@drawable/grey_button"
         />
     <Button
         android:id="@+id/reportIncident"
@@ -47,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@id/viewLiveFeed"
-        android:background="@color/colorAccent"
+        android:background="@drawable/grey_button"
         />
 </RelativeLayout>
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.s3639782.clouda2.model.User;
 import com.example.s3639782.clouda2.view.MainActivity;
+import com.example.s3639782.clouda2.view.MenuActivity;
 import com.example.s3639782.clouda2.view.ProfileSetupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -73,7 +74,7 @@ public class RegisterUser implements View.OnClickListener{
                             mDatabase.child("users").child(uid).child("name").setValue(Name.getText().toString());
                             mDatabase.child("users").child(uid).child("email").setValue(Email.getText().toString());
 
-                            Intent i = new Intent(context.getApplicationContext(), ProfileSetupActivity.class);
+                            Intent i = new Intent(context.getApplicationContext(), MenuActivity.class);
                             context.startActivity(i);
                         }
                         else{
