@@ -20,7 +20,7 @@ public class WebViewActivity extends AppCompatActivity{
 
         webView = (WebView) findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://data-analysis-dot-ccassignment2.appspot.com/chart");
+        webView.loadUrl("https://data-analysis-dot-ccassignment2.appspot.com");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
     }
