@@ -74,7 +74,7 @@ public class RegisterUser implements View.OnClickListener{
                             mDatabase.child("users").child(uid).child("name").setValue(Name.getText().toString());
                             mDatabase.child("users").child(uid).child("email").setValue(Email.getText().toString());
 
-                            Intent i = new Intent(context.getApplicationContext(), MenuActivity.class);
+                            Intent i = new Intent(context.getApplicationContext(), ProfileSetupActivity.class);
                             context.startActivity(i);
                         }
                         else{

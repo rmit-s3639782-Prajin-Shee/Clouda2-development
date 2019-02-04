@@ -64,7 +64,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(ProfileSetupActivity.this, MapsActivity.class);
+                Intent i = new Intent(ProfileSetupActivity.this, MenuActivity.class);
                 startActivity(i);
 
                 firebaseAuth = FirebaseAuth.getInstance();
